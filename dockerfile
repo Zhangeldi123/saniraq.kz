@@ -11,7 +11,7 @@ WORKDIR /code
 COPY --from=requirements-stage /tmp/requirements.txt .
 RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 RUN pip install --no-cache-dir uvicorn
-
+RUN pip install --no-cache-dir python-multipart
 
 COPY . .
 
