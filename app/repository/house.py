@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models.house import Houses
-from schemas.house import HouseCreate, HouseUpdate
+from ..models.house import Houses
+from ..schemas.house import HouseCreate, HouseUpdate
 from fastapi import HTTPException, status
 
 class HousesRepository:

@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.comment import Comments
+from ..models.comment import Comments
 from fastapi import HTTPException, status
 
 class CommentsRepository:

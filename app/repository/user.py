@@ -1,7 +1,7 @@
 import bcrypt
 from sqlalchemy.orm import Session
-from models.user import User
-from schemas.user import UserCreate
+from ..models.user import User
+from ..schemas.user import UserCreate
 from typing import Optional
 
 class UsersRepository:

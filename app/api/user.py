@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, Form, HTTPException, Request, Response
 from fastapi.responses import JSONResponse, RedirectResponse, Response
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer
-from database import get_db
-from repository.user import UsersRepository
-from schemas.user import UserResponse, UserCreate
+from ..database import get_db
+from ..repository.user import UsersRepository
+from ..schemas.user import UserResponse, UserCreate
 from datetime import datetime, timedelta, timezone
 from jose import JWTError, jwt
 import os

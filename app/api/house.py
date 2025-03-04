@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends, Form, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
-from database import get_db
-from repository.house import HousesRepository
-from repository.comment import CommentsRepository
-from schemas.house import HouseCreate, HouseUpdate
+from ..database import get_db
+from ..repository.house import HousesRepository
+from ..repository.comment import CommentsRepository
+from ..schemas.house import HouseCreate, HouseUpdate
 from fastapi import Request
-from schemas.comment import CommentCreate, CommentUpdate
+from ..schemas.comment import CommentCreate, CommentUpdate
 from jose import JWTError, jwt
 import os
 from jose import JWTError  # Import JWTError explicitly
