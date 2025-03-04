@@ -11,6 +11,7 @@ python = "^3.12"
 fastapi = "^0.115.11"
 alembic = "^1.14.1"
 sqlalchemy = "^2.0.38"
+python-multipart = "^0.0.20"
 pydantic = "^2.10.6"
 python-jose = "^3.4.0"
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
