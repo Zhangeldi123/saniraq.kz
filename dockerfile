@@ -10,6 +10,8 @@ FROM python:3.12.2
 WORKDIR /code
 COPY --from=requirements-stage /tmp/requirements.txt .
 RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
+RUN pip install --no-cache-dir uvicorn
+
 COPY . .
 
 EXPOSE 8000
