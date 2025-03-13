@@ -1,7 +1,10 @@
+from typing import List, Optional
 from sqlalchemy.orm import Session
-from ..models.house import Houses
-from ..schemas.house import HouseCreate, HouseUpdate
+from models.house import Houses
+from schemas.house import HouseCreate, HouseUpdate
 from fastapi import HTTPException, status
+from sqlalchemy import func
+from schemas.house import HouseResponse
 
 class HousesRepository:
     def __init__(self, db: Session):
@@ -47,3 +50,48 @@ class HousesRepository:
         self.db.delete(house)
         self.db.commit()
         return {"detail": "House deleted successfully"}
+
+    def get_filtered_houses(
+        self,
+        limit: int,
+        offset: int,
+        type: Optional[str],
+        rooms_count: Optional[int],
+        price_from: Optional[int],
+        price_until: Optional[int]
+    ) -> List[HouseResponse]:
+        query = self.db.query(Houses)
+        
+        # Применяем фильтры
+        if type:
+            query = query.filter(Houses.type == type)
+        if rooms_count is not None:
+            query = query.filter(Houses.rooms_count == rooms_count)
+        if price_from is not None:
+            query = query.filter(Houses.price >= price_from)
+        if price_until is not None:
+            query = query.filter(Houses.price <= price_until)
+            
+        # Сортировка и пагинация
+        query = query.order_by(Houses.created_at.desc())
+        return query.offset(offset).limit(limit).all()
+
+    def get_total_count(
+        self,
+        type: Optional[str],
+        rooms_count: Optional[int],
+        price_from: Optional[int],
+        price_until: Optional[int]
+    ) -> int:
+        query = self.db.query(func.count(Houses.id))
+        
+        if type:
+            query = query.filter(Houses.type == type)
+        if rooms_count is not None:
+            query = query.filter(Houses.rooms_count == rooms_count)
+        if price_from is not None:
+            query = query.filter(Houses.price >= price_from)
+        if price_until is not None:
+            query = query.filter(Houses.price <= price_until)
+            
+        return query.scalar()

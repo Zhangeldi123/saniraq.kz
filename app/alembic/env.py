@@ -8,6 +8,7 @@ from database import Base
 from models.user import User
 from models.house import Houses
 from models.comment import Comments
+from models.favorites import Favorites
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

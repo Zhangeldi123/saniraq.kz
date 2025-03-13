@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, Form, HTTPException, Request, Response
 from fastapi.responses import JSONResponse, RedirectResponse, Response
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer
-from ..database import get_db
-from ..repository.user import UsersRepository
-from ..schemas.user import UserResponse, UserCreate
+from database import get_db
+from repository.user import UsersRepository
+from schemas.user import UserResponse, UserCreate
 from datetime import datetime, timedelta, timezone
 from jose import JWTError, jwt
 import os
@@ -62,8 +62,7 @@ def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="User already exists")
 
     user = users_repo.create_user(user_data)
-    return UserResponse(id=user.id, email=user.email, fullname=user.fullname)
-
+    return UserResponse(id=user.id, email=user.email, fullname=user.fullname, phone=user.phone, city=user.city)
 
 
 @user_router.post("/login")
