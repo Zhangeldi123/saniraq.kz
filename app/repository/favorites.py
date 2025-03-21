@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models.favorites import Favorites
-from models.house import Houses
+from ..models.favorites import Favorites
+from ..models.house import Houses
 from fastapi import HTTPException, status
 
 

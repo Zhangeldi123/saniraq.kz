@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Request
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer
-from database import get_db
-from repository.favorites import FavoritesRepository
-from schemas.user import UserResponse
+from ..database import get_db
+from ..repository.favorites import FavoritesRepository
+from ..schemas.user import UserResponse
 import os
 from jose import JWTError, jwt
 

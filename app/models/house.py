@@ -1,6 +1,6 @@
 from sqlalchemy import Column, DateTime, Integer, String, ForeignKey, Enum, Boolean
 from sqlalchemy.orm import relationship
-from database import Base
+from ..database import Base
 from datetime import datetime
 
 class Houses(Base):

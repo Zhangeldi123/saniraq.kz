@@ -1,10 +1,10 @@
 from typing import List, Optional
 from sqlalchemy.orm import Session
-from models.house import Houses
-from schemas.house import HouseCreate, HouseUpdate
+from ..models.house import Houses
+from ..schemas.house import HouseCreate, HouseUpdate
 from fastapi import HTTPException, status
 from sqlalchemy import func
-from schemas.house import HouseResponse
+from ..schemas.house import HouseResponse
 
 class HousesRepository:
     def __init__(self, db: Session):
